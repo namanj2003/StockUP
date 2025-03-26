@@ -7,9 +7,19 @@ import plotly.express as px
 import requests
 
 st.set_page_config(page_title="StockUP", layout="wide", page_icon=":chart_with_upwards_trend:")
+st.sidebar.image("D:\Clg coding\My Projects\StockUP Project\images\stockuplogo.png", use_container_width=True)
 st.title('Fundamental Information')
 a = '''
 <style>
+[data-testid="stSidebarContent"]{
+        background:#000000;
+    }
+.stApp {
+    background: #000000;
+    }
+[data-testid="stHeader"]{
+    background:#000000;
+    }
 [data-testid="StyledLinkIconContainer"]{
     text-align: center;
 }

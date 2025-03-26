@@ -4,11 +4,19 @@ from bs4 import BeautifulSoup
 from dateutil import parser
 
 st.set_page_config(page_title="StockUP", layout="wide", page_icon=":chart_with_upwards_trend:")
-
+st.sidebar.image("D:\Clg coding\My Projects\StockUP Project\images\stockuplogo.png", use_container_width=True)
 # Simplified CSS
 css = """
 <style>
-/* Remove default padding on the main container */
+[data-testid="stSidebarContent"]{
+        background:#000000;
+    }
+.stApp {
+    background: #000000;
+    }
+[data-testid="stHeader"]{
+    background:#000000;
+    }
 [data-testid="stAppViewContainer"] {
     padding: 0 !important;
 }
@@ -28,16 +36,28 @@ body, .main {
     overflow-x: hidden;
 }
 
-/* Make images responsive but keep a max width if set in st.image */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Provide vertical spacing between articles */
+/* Make images responsive and match the height of text container */
 .article-block {
+    display: flex;
+    align-items: center;
     margin-bottom: 2rem;
 }
+
+.article-block img {
+    width: 100%;
+    height: auto;
+    max-height: 250px; /* Adjust max height to match the text block */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Flexbox to align text and image */
+.article-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 </style>
 """
 
