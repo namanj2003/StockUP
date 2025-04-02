@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 st.set_page_config(
     page_title="StockUP",
@@ -6,7 +7,8 @@ st.set_page_config(
     layout="wide", 
     initial_sidebar_state="collapsed"
 )
-st.sidebar.image("D:\Clg coding\My Projects\StockUP Project\images\stockuplogo.png", use_container_width=True)
+image_path = os.path.join(os.path.dirname(__file__), "./images/stockuplogo.png")
+st.sidebar.image(image_path, use_container_width=True)
 
 css = """
 <style>
@@ -25,11 +27,8 @@ css = """
 
 st.markdown(css, unsafe_allow_html=True)
 
-st.image(
-    "D:\Clg coding\My Projects\StockUP Project\images\\2.png",
-    use_container_width=True
-)
-st.image(
-    "D:\Clg coding\My Projects\StockUP Project\images\FINBERTTT.png",
-    use_container_width=True
-)
+base_dir = os.path.dirname(__file__)  
+image1_path = os.path.join(base_dir, "./images/2.png")
+image2_path = os.path.join(base_dir, "./images/FINBERTTT.png")
+st.image(image1_path, use_container_width=True)
+st.image(image2_path, use_container_width=True)

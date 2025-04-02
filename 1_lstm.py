@@ -127,7 +127,6 @@ def run_lstm_entire_prediction(instrument_key, start_date, end_date):
 
     # E) Build and train LSTM model
     model = Sequential()
-    # Here, we explicitly use window_size=60 in the input shape
     model.add(LSTM(50, return_sequences=True, input_shape=(60, 1)))
     model.add(LSTM(50))
     model.add(Dense(1))

@@ -5,9 +5,11 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 import requests
+import os
 
 st.set_page_config(page_title="StockUP", layout="wide", page_icon=":chart_with_upwards_trend:")
-st.sidebar.image("D:\Clg coding\My Projects\StockUP Project\images\stockuplogo.png", use_container_width=True)
+image_path = os.path.join(os.path.dirname(__file__), "../images/stockuplogo.png")
+st.sidebar.image(image_path, use_container_width=True)
 st.title('Fundamental Information')
 a = '''
 <style>
