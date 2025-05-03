@@ -132,7 +132,25 @@ def run_lstm_entire_prediction(instrument_key, start_date, end_date):
     model.add(Dense(1))
     model.compile(loss="mean_squared_error", optimizer="adam")
     st.write("Training LSTM model on train portion (5 epochs, batch_size=1)...")
-    model.fit(X_train, y_train, epochs=5, batch_size=1, verbose=2)
+    history = model.fit(X_train, y_train, 
+                    epochs=20, batch_size=16, 
+                    validation_split=0.2, verbose=2)
+
+    # Plot Training vs. Validation Loss
+    fig_loss = go.Figure()
+    fig_loss.add_trace(go.Scatter(y=history.history['loss'], mode='lines', name='Training Loss', line=dict(color='blue')))
+    fig_loss.add_trace(go.Scatter(y=history.history['val_loss'], mode='lines', name='Validation Loss', line=dict(color='red')))
+
+    fig_loss.update_layout(
+        title="Training vs Validation Loss",
+        xaxis_title="Epochs",
+        yaxis_title="Loss",
+        legend=dict(x=0, y=1, bgcolor="rgba(255,255,255,0)")
+    )
+    st.plotly_chart(fig_loss, use_container_width=True)
+
+
+
 
     # F) Create sequences for the entire dataset so we can predict for all days from index=window_size onward
     X_all, y_all = create_sequences(scaled_data, window_size)

@@ -1,4 +1,5 @@
 import os
+import json
 import logging
 import warnings
 import requests
@@ -483,13 +484,18 @@ def main():
     - LSTM Only (using only price data)
     - LSTM+FinBERT (using price data and sentiment from news)
     """)
+
+    base_dir = os.path.dirname(__file__)
+    nse_json_path = os.path.join(base_dir, "../Files/NSE.json")
+
     
     try:
-        response = requests.get("https://energisense-server.onrender.com/nse-json")
-        response.raise_for_status()
-        json_data = response.json()
+        with open(nse_json_path, "r") as file:
+            json_data = json.load(file)
+
         if isinstance(json_data, dict):
             json_data = [json_data]
+
         equities = {
             item.get("name"): {
                 "instrument_key": item.get("instrument_key"),
