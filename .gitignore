@@ -4,3 +4,7 @@
 # Ignore virtual environment directory
 .venv/*
 __pycache__/*
+.devcontainer/*
+.vscode/*
+# Ignore test files
+1_lstm.py

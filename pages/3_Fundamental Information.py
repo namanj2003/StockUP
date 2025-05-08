@@ -36,7 +36,7 @@ a = '''
 st.markdown(a, unsafe_allow_html=True)
 
 # Load symbols from CSV
-csv = pd.read_csv('symbols.csv')
+csv = pd.read_csv('Files/symbols.csv')
 symbol = csv['Symbol'].tolist()
 for i in range(len(symbol)):
     symbol[i] = symbol[i] + ".NS"

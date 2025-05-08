@@ -316,7 +316,7 @@ def run_lstm_finbert_upstox(instrument_key, short_name, start_date, end_date, wi
     X_test = X_test.reshape((X_test.shape[0], window_size, 2))
     
     with st.spinner("Model is running..."):
-        model = load_model("improved_lstm_finbert_model_final.keras", compile=False)
+        model = load_model("Model/improved_lstm_finbert_model_final.keras", compile=False)
         predictions = model.predict(X_all)
     predictions = scaler_finbert.inverse_transform(predictions)
     df_merged["Predicted_FinBERT"] = np.nan
@@ -342,7 +342,7 @@ def load_and_predict_lstm_only(instrument_key, start_date, end_date, window_size
     X_all = X_all.reshape((X_all.shape[0], window_size, 1))
     
     with st.spinner("Model is running..."):
-        model_only = load_model("improved_lstm_only_model_final.keras", compile=False)
+        model_only = load_model("Model/improved_lstm_only_model_final.keras", compile=False)
         predictions = model_only.predict(X_all)
     predictions = scaler_only.inverse_transform(predictions)
     
@@ -455,7 +455,7 @@ def compare_models(instrument_key, short_name, start_date, end_date, window_size
         X_next = last_window.reshape((1, window_size, 2))
     else:
         chosen_model_name = "LSTM Only"
-        chosen_model = load_model("improved_lstm_only_model_final.keras", compile=False)
+        chosen_model = load_model("Model/improved_lstm_only_model_final.keras", compile=False)
         df_temp = fetch_upstox_data(instrument_key, start_date, end_date)
         df_temp["Date"] = df_temp["timestamp"].dt.date
         df_price_temp = df_temp[["Date", "close"]].copy()
