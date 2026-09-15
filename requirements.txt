@@ -11,5 +11,5 @@ scikit-learn==1.6.1
 streamlit==1.54.0
 tensorflow==2.19.0
 torch==2.8.0
-transformers==5.0.0rc3
+transformers==5.10.1
 yfinance==0.2.55
